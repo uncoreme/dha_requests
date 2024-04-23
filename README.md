@@ -1,4 +1,6 @@
 # Easily way to get info by Discord HTTP API / ENG
+version: 0.1
+
 ## How to start
 1. For start you have to go to `config.py` file and set `api_version`, `redirect_uri`, `client_id`, and `client_secret` values.
 2. Import `DHAUser` class and `get_token`, `get_user_by_code` functions from `src/main.py`.
@@ -19,11 +21,13 @@ DHAUser methods:
 
 
 # Быстрый способ получения информации с помощью Discord HTTP API
+версия: 0.1
+
 ## Как начать
 1. Для начала вам необходимо перейти в файл `config.py` и установить значения для `api_version`, `redirect_uri`, `client_id`, и `client_secret`.
 2. Затем импортируйте в нужный вам файл класс `DHAUser` и функции `get_token`, `get_user_by_code` из `src/main.py`.
 
-## Класс DHAUser
+## Класс DHAUser / RU
 Клас DHAUser принимает один аргумент - `authorization_token` (токен пользователя).
 Методы класса DHAUser:
 1. `DHAUser('user_token').user_info` - возрващает массив с информацией о пользователе.
