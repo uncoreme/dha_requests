@@ -17,7 +17,7 @@ DHAUser methods:
 `get_token('user_code')` - returns a user token.
 
 ## Get user by code
-`get_user_by_code` - returns a user by code.
+`get_user_by_code('user_code')` - returns a user by code.
 
 
 # Быстрый способ получения информации с помощью Discord HTTP API / RU
