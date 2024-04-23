@@ -20,14 +20,14 @@ DHAUser methods:
 `get_user_by_code` - returns a user by code.
 
 
-# Быстрый способ получения информации с помощью Discord HTTP API
+# Быстрый способ получения информации с помощью Discord HTTP API / RU
 версия: 0.1
 
 ## Как начать
 1. Для начала вам необходимо перейти в файл `config.py` и установить значения для `api_version`, `redirect_uri`, `client_id`, и `client_secret`.
 2. Затем импортируйте в нужный вам файл класс `DHAUser` и функции `get_token`, `get_user_by_code` из `src/main.py`.
 
-## Класс DHAUser / RU
+## Класс DHAUser
 Клас DHAUser принимает один аргумент - `authorization_token` (токен пользователя).
 Методы класса DHAUser:
 1. `DHAUser('user_token').user_info` - возрващает массив с информацией о пользователе.
