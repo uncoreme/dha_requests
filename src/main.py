@@ -1,5 +1,5 @@
-from config import redirect_uri, client_id, client_secret
-from urls import discord_token_url, get_user_url, list_guilds_url
+from .config import redirect_uri, client_id, client_secret
+from .urls import discord_token_url, get_user_url, list_guilds_url, guild_url
 import requests
 
 
@@ -8,7 +8,7 @@ class DHAUser:
         self.user = requests.get(get_user_url, headers={'Authorization': f'Bearer {auth_token}'}).json()
         self.auth_token = auth_token
 
-    async def user_info(self):
+    async def info(self):
         return self.user
 
     async def guilds(self):
@@ -23,6 +23,27 @@ class DHAUser:
 
     async def avatar(self):
         return f'https://cdn.discordapp.com/avatars/{self.user['id']}/{self.user['avatar']}.png'
+
+    async def name(self, select='u'):
+        if select == 'u':
+            return f'{self.user['username']}'
+        elif select == 'g':
+            return f'{self.user['global_name']}'
+
+
+class DHAGuild:
+    def __init__(self, guild_id: str, bot_token: str):
+        self.guild_id = guild_id
+        self.guild = requests.get(guild_url(guild_id), headers={'Authorization': f'Bot {bot_token}'}).json()
+
+    async def info(self):
+        return self.guild
+
+    async def icon(self):
+        return f'https://cdn.discordapp.com/icons/{self.guild_id}/{self.guild['icon']}.png'
+
+    async def name(self):
+        return f'{self.guild["name"]}'
 
 
 async def get_token(code: str) -> str:
