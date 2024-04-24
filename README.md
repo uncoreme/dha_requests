@@ -420,17 +420,56 @@ guild.list_members()  # limit (default 5) can take int value from 1 to 10
   'mute': False,
   'deaf': False
 }]
+
+
+guild.list_roles()
+>>> [{
+  'id': '<role_id>',
+  'name': '@everyone',
+  'description': None,
+  'permissions': '<permissions>',
+  'position': 0,
+  'color': 0,
+  'hoist': False,
+  'managed': False,
+  'mentionable': False,
+  'icon': None,
+  'unicode_emoji': None,
+  'flags': 0
+},]
 ```
 
 ## Get token function
-`get_token('user_code')` - returns a user token.
+```py
+get_token('user_code')
+>>> '<auth_token>'
+```
 
 ## Get user by code
-`get_user_by_code('user_code')` - returns a user by code.
+```py
+get_user_by_code('user_code')
+>>> {
+  'id': '<user_id>',
+  'username': '<username>',
+  'avatar': '<avatar>',
+  'discriminator': '0',
+  'public_flags': 0,
+  'flags': 0,
+  'banner': None,
+  'accent_color': <accent_color>,
+  'global_name': '<user_global_name>',
+  'avatar_decoration_data': None,
+  'banner_color': '<color>',
+  'clan': None,
+  'mfa_enabled': False,
+  'locale': 'ru',
+  'premium_type': 0
+}
+```
 
 
 # Быстрый способ получения информации с помощью Discord HTTP API / RU
-версия: 0.2
+версия: 0.2 (устаревшая, новая на английском языке)
 
 ## Как начать
 1. Для начала вам необходимо перейти в файл `config.py` и установить значения для `api_version`, `redirect_uri`, `client_id`, и `client_secret`.
