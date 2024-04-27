@@ -1,5 +1,5 @@
 # Easily way to get info by Discord HTTP API / ENG
-version: 0.4
+Version: 0.4
 
 ## How to start
 1. For start you have to go to `config.py` file and set `api_version`, `redirect_uri`, `client_id`, and `client_secret` values.
@@ -485,7 +485,7 @@ get_user_by_code('user_code')
 
 
 # Быстрый способ получения информации с помощью Discord HTTP API / RU
-Версия: 0.3
+Версия: 0.4
 
 ## Как начать использовать?
 1. Для начала перейдите в файл `config.py` и установите значения для `api_version`, `redirect_uri`, `client_id`, и `client_secret`.
