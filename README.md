@@ -1,5 +1,5 @@
 # Easily way to get info by Discord HTTP API / ENG
-version: 0.3
+version: 0.4
 
 ## How to start
 1. For start you have to go to `config.py` file and set `api_version`, `redirect_uri`, `client_id`, and `client_secret` values.
@@ -437,6 +437,22 @@ guild.list_roles()
   'unicode_emoji': None,
   'flags': 0
 },]
+
+
+guild.members_count()
+>>> '<guild_members_count>'
+
+
+guild.quick_info()
+>>> {
+    'id': '<guild_id>',
+    'name': '<guild_name>',
+    'owner_id': '<guild_owner_id>',
+    'region': '<guild_region>',
+    'nsfw': '<guild_nsfw>',
+    'avatar': 'https://cdn.discordapp.com/icons/<guild_id>/<guild_icon>.png',
+    'members_count': '<guild_members_count>'
+}
 ```
 
 ## Get token function
@@ -907,6 +923,22 @@ guild.list_roles()
   'unicode_emoji': None,
   'flags': 0
 },]
+
+
+guild.members_count()
+>>> '<guild_members_count>'
+
+
+guild.quick_info()
+>>> {
+    'id': '<guild_id>',
+    'name': '<guild_name>',
+    'owner_id': '<guild_owner_id>',
+    'region': '<guild_region>',
+    'nsfw': '<guild_nsfw>',
+    'avatar': 'https://cdn.discordapp.com/icons/<guild_id>/<guild_icon>.png',
+    'members_count': '<guild_members_count>'
+}
 ```
 
 ## Функция получения токена пользователя
