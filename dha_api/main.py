@@ -8,16 +8,17 @@ from typing import Dict, List
 class DHAUser:
     def __init__(self, auth_token: str):
         self.auth_token = auth_token
+        self.headers = {'Authorization': f'Bearer {auth_token}'}
 
     def info(self) -> Dict:
-        return requests.get(get_user_url, headers={'Authorization': f'Bearer {self.auth_token}'}).json()
+        return requests.get(get_user_url, headers=self.headers).json()
 
     def guilds(self) -> Dict:
-        return requests.get(list_guilds_url, headers={'Authorization': f'Bearer {self.auth_token}'}).json()
+        return requests.get(list_guilds_url, headers=self.headers).json()
 
     def guilds_owner(self) -> List:
         guilds_list = []
-        for item in requests.get(list_guilds_url, headers={'Authorization': f'Bearer {self.auth_token}'}).json():
+        for item in requests.get(list_guilds_url, headers=self.headers).json():
             if item['owner']:
                 guilds_list.append(item)
         return guilds_list
@@ -47,10 +48,11 @@ class DHAMember:
         self.bot_token = bot_token
         self.member_id = member_id
         self.guild_id = guild_id
+        self.headers = {'Authorization': f'Bot {bot_token}'}
 
     def info(self) -> Dict:
         return requests.get(get_guild_member(self.guild_id, self.member_id),
-                            headers={'Authorization': f'Bot {self.bot_token}'}).json()
+                            headers=self.headers).json()
 
     def user(self) -> Dict:
         return self.info()['user']
@@ -83,9 +85,10 @@ class DHAGuild:
     def __init__(self, guild_id: int, bot_token: str):
         self.guild_id = guild_id
         self.bot_token = bot_token
+        self.headers = {'Authorization': f'Bot {bot_token}'}
 
     def info(self) -> Dict:
-        return requests.get(guild_url(self.guild_id), headers={'Authorization': f'Bot {self.bot_token}'}).json()
+        return requests.get(guild_url(self.guild_id), headers=self.headers).json()
 
     def icon(self) -> str:
         return f'https://cdn.discordapp.com/icons/{self.guild_id}/{self.info()['icon']}.png'
@@ -94,17 +97,17 @@ class DHAGuild:
         return f'{self.info()["name"]}'
 
     def list_channels(self) -> Dict:
-        return requests.get(list_channels(self.guild_id), headers={'Authorization': f'Bot {self.bot_token}'}).json()
+        return requests.get(list_channels(self.guild_id), headers=self.headers).json()
 
     def channel(self, channel_id: str) -> Dict:
-        return requests.get(get_channel(channel_id), headers={'Authorization': f'Bot {self.bot_token}'}).json()
+        return requests.get(get_channel(channel_id), headers=self.headers).json()
 
     def list_members(self, limit: int = 5) -> Dict:
         return requests.get(list_guild_members(self.guild_id, limit),
                             headers={'Authorization': f'Bot {self.bot_token}'}).json()
 
     def list_roles(self) -> Dict:
-        return requests.get(list_guild_roles(self.guild_id), headers={'Authorization': f'Bot {self.bot_token}'}).json()
+        return requests.get(list_guild_roles(self.guild_id), headers=self.headers).json()
 
     def members_count(self) -> str:
         return self.info()['approximate_member_count']
